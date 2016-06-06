@@ -8,6 +8,14 @@
 
 import Foundation
 
+// hskim: 강제로 그레고리안으로 하도록 바꿨다. 2016년 6월 1일 21:31
+public struct AppCalendar {
+    static let gregorian : NSCalendar = NSCalendar.init(calendarIdentifier: NSCalendarIdentifierGregorian) ?? NSCalendar.currentCalendar()
+}
+
+
+
+
 prefix func - (duration: Duration) -> (Duration) {
     return Duration(value: -duration.value, unit: duration.unit)
 }
@@ -15,7 +23,7 @@ prefix func - (duration: Duration) -> (Duration) {
 public class Duration {
     public let value: Int
     public let unit: NSCalendarUnit
-    private let calendar = NSCalendar.currentCalendar()
+    private let calendar = AppCalendar.gregorian // hskim
     
     /**
         Initialize a date before a duration.

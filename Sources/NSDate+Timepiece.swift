@@ -12,11 +12,11 @@ import ObjectiveC
 // MARK: - Calculation
 
 public func + (lhs: NSDate, rhs: Duration) -> NSDate {
-    return NSCalendar.currentCalendar().dateByAddingDuration(rhs, toDate: lhs, options: .SearchBackwards)!
+    return AppCalendar.gregorian.dateByAddingDuration(rhs, toDate: lhs, options: .SearchBackwards)!
 }
 
 public func - (lhs: NSDate, rhs: Duration) -> NSDate {
-    return NSCalendar.currentCalendar().dateByAddingDuration(-rhs, toDate: lhs, options: .SearchBackwards)!
+    return AppCalendar.gregorian.dateByAddingDuration(-rhs, toDate: lhs, options: .SearchBackwards)!
 }
 
 public func - (lhs: NSDate, rhs: NSDate) -> NSTimeInterval {
@@ -85,7 +85,7 @@ public extension NSDate {
     }
     
     private var calendar: NSCalendar {
-        return NSCalendar.currentCalendar()
+        return AppCalendar.gregorian
     }
     
     // MARK: - Initialize
